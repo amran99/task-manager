@@ -12,8 +12,12 @@ class Home extends CI_Controller {
    if($this->session->userdata('logged_in'))
    {
      $session_data = $this->session->userdata('logged_in');
-     $data['first_name'] = $session_data['first_name'];
+     $data['session_data'] = $session_data;
+     $this->load->model('tasksmodel');
+     $data['tasks']=$this->tasksmodel->getTasks();
+     
      $this->load->view('pages/home_view', $data);
+     $this->load->view('pages/tasks', $data);
      $this->load->view("includes/footer",$data);
    }
    else

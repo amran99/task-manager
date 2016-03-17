@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'https://selene.hud.ac.uk/u1357440/taskmanager';
+$config['base_url']	= 'https://selene.hud.ac.uk/u1357440/task-manager';
 
 /*
 |--------------------------------------------------------------------------

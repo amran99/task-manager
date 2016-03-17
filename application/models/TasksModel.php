@@ -1,5 +1,5 @@
 <?php
-class TasksModel extends CI_Model {
+class tasksmodel extends CI_Model {
  function __construct(){
   parent::__construct();
  }

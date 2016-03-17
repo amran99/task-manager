@@ -6,7 +6,7 @@
    <link href="<?php echo base_url()."/css/navbar.css";?>" rel="stylesheet" type="text/css">
  </head>
  <body>
-   <h2>Welcome <?php echo $first_name?>!</h2>
+   <h2>Welcome <?php echo $session_data['first_name']?>!</h2>
    <a href="home/logout" class="myButton">Logout</a>
  </body>
 </html>
