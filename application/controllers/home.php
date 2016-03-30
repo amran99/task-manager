@@ -40,11 +40,8 @@ class Home extends CI_Controller {
    }
    
    $this->load->model('tasksmodel');
-   if($this->tasksmodel->getProject($project_id)){
-    $data['project']=$this->tasksmodel->getProject($project_id);
-   }else{
-    $data['project']="";
-   }
+   $data['project']=$this->tasksmodel->getProject($project_id);
+   $data['projectTasks']=$this->tasksmodel->getProjectTasks($project_id);
    
    $this->load->view('pages/home_view', $data);
    $this->load->view('pages/project', $data);
@@ -60,6 +57,16 @@ class Home extends CI_Controller {
   $this->load->model('tasksmodel');
   $this->tasksmodel->insertProject($user_id, $projectname);
   redirect('home', 'refresh');
+ }
+ 
+ function addTask(){
+  $project_id=$this->input->post('project_id');
+  $taskname=$this->input->post('taskname');
+  $taskdesc=$this->input->post('taskdesc');
+  $taskfinish=$this->input->post('taskfinish');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->insertTask($project_id, $taskname, $taskdesc, $taskfinish);
+  
  }
  
  function logout()

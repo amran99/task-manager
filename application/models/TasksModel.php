@@ -11,9 +11,17 @@ class tasksmodel extends CI_Model {
   return $query->result();
  }
  
- function getProject($project_id){
+ function getProjectTasks($project_id){
   $this->db->select('*');
   $this->db->from('tasks');
+  $this->db->where('project_id', $project_id);
+  $query = $this->db->get();
+  return $query->result();
+ }
+ 
+ function getProject($project_id){
+  $this->db->select('*');
+  $this->db->from('projects');
   $this->db->where('project_id', $project_id);
   $query = $this->db->get();
   return $query->result();
@@ -22,6 +30,11 @@ class tasksmodel extends CI_Model {
  function insertProject($user_id,$projectname){
   $newProject=array("user_id"=>$user_id,"project_name"=>$projectname);
   return $this->db->insert('projects', $newProject);
+ }
+ 
+ function insertTask($project_id,$taskname, $taskdesc, $taskfinish){
+  $newTask=array("project_id"=>$project_id,"task_name"=>$taskname,"task_description"=>$taskdesc,"task_start"=>date("Y/m/d"),"task_finish"=>$taskfinish,"task_status"=>"not started");
+  return $this->db->insert('tasks', $newTask);
  }
  
  
