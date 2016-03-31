@@ -66,7 +66,16 @@ class Home extends CI_Controller {
   $taskfinish=$this->input->post('taskfinish');
   $this->load->model('tasksmodel');
   $this->tasksmodel->insertTask($project_id, $taskname, $taskdesc, $taskfinish);
-  
+  redirect('home/project/'.$project_id, 'refresh');
+ }
+ 
+ function updateTask(){
+  $project_id=$this->input->post('project_id');
+  $task_id=$this->input->post('task_id');
+  $movetaskto=$this->input->post('movetaskto');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->moveTask($task_id, $movetaskto);
+  redirect('home/project/'.$project_id, 'refresh');
  }
  
  function logout()

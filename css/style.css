@@ -30,3 +30,17 @@ p.footer{
 	display: none;
 }
 
+.hiddenContent{
+	height: 30px;
+	overflow: hidden;
+	transition: 1s;
+}
+
+.hiddenContentTitle{
+	color: chartreuse;
+}
+
+.hiddenContentTitle:hover{
+	cursor: pointer;
+	color: teal;
+}
