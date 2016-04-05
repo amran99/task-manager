@@ -48,7 +48,13 @@ class tasksmodel extends CI_Model {
  function deleteTask($task_id){
   $this->db->where('task_id', $task_id);
   $result=$this->db->delete('tasks');
-  return $result;
+ }
+ 
+ function deleteProject($project_id){
+  $this->db->where('project_id', $project_id);
+  $result=$this->db->delete('tasks');
+  $this->db->where('project_id', $project_id);
+  $result1=$this->db->delete('projects');
  }
  
  

@@ -110,6 +110,26 @@ class Home extends CI_Controller {
    }else{redirect('login', 'refresh');}
  }
  
+ function deleteProjectConfirmation(){
+  if($this->session->userdata('logged_in')){
+   $session_data = $this->session->userdata('logged_in');
+   $data['session_data'] = $session_data;
+   $data['project_id']=$this->input->post('project_id');
+   $this->load->model('tasksmodel');
+   $data['project']=$this->tasksmodel->getProject($data['project_id']);
+   $this->load->view('pages/home_view', $data);
+   $this->load->view('pages/confirmation', $data);
+   $this->load->view("includes/footer");
+  }
+ }
+ 
+ function deleteProject(){
+  $project_id=$this->input->post('project_id');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->deleteProject($project_id);
+  redirect('home', 'refresh');
+ }
+ 
  function logout()
  {
    $this->session->unset_userdata('logged_in');
