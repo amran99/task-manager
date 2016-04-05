@@ -4,14 +4,14 @@
 <?php
 	
 $h3 = ["Not Started","Started","To Review","Finished"];
-	
+echo "<div id='behindDiv' class='behindDiv'>";	
 for($i=0;$i<4;$i++){
-	echo "<div class='column'>";
+	echo "<div class='column' id='column".$i."'>";
 	echo "<h3>".$h3[$i]."</h3>";
 	foreach ($projectTasks as $task){
 		if($task->task_status===strtolower($h3[$i])){
 			echo "<div class='hiddenContent' id='".$task->task_id."'>";
-			echo "<p><span class='hiddenContentTitle' onclick='openContent(".$task->task_id.")'>Task Name: ".$task->task_name."</span></br>";
+			echo "<p><span class='hiddenContentTitle' onclick='openContent(".$task->task_id.")'>Task Name: ".$task->task_name."</span>";
 			echo "Task Description: ".$task->task_description."</br>";
 			echo "Task Start: ".$task->task_start."</br>";
 			echo "Task Finish: ".$task->task_finish."</br>";
@@ -34,6 +34,7 @@ for($i=0;$i<4;$i++){
 			echo form_close();
 				
 			//Delete Task
+			echo "<br><span>Delete Task:</span>";
 			echo form_open('home/deletetask');
 			echo form_label('', 'project_id');
 			echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
@@ -48,6 +49,7 @@ for($i=0;$i<4;$i++){
 	}
 	echo "</div>";
 }
+echo "</div>";
 ?>
 	
 <?php
@@ -55,7 +57,7 @@ for($i=0;$i<4;$i++){
 ////////////////////////////////////////////    Add Task    ///////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-echo "<h3>Create New Task: </h3>";
+echo "<div class='underColumns'><h3>Create New Task: </h3>";
 	
 echo form_open('home/addtask');
 echo form_label('', 'project_id');
@@ -73,6 +75,6 @@ echo form_close();
 ////////////////////////////////////    Link to Project Settings    ///////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-echo "<br><a href='".base_url()."index.php/home/settings/".$project[0]->project_id."'>Project Settings</a>";
+echo "<br><a href='".base_url()."index.php/home/settings/".$project[0]->project_id."'>Project Settings</a></div>";
 	
 ?>

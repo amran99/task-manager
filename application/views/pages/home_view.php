@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    <title>Task Manager</title>
    <link href="<?php echo base_url()."/css/style.css";?>" rel="stylesheet" type="text/css">
    <script src="<?php echo base_url()."/javascript/jquery.js";?>"></script>
+   <script src="<?php echo base_url()."/javascript/jquery-1.11.2.js";?>"></script>
  </head>
  <body>
    <h2>Welcome <?php echo $session_data['first_name']?>!</h2>
