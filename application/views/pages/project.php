@@ -28,6 +28,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				echo "Task Start: ".$task->task_start."</br>";
 				echo "Task Finish: ".$task->task_finish."</br>";
 				echo "Task Status: ".$task->task_status."</p>";
+				
+				///Update Task
 				echo form_open('home/updatetask');
 				echo form_label('', 'project_id');
 				echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
@@ -42,7 +44,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				echo "</select>";
 				echo form_submit('add_btn', 'Update Task');
 				echo form_close();
+				
+				//Delete Task
+				echo form_open('home/deletetask');
+				echo form_label('', 'project_id');
+				echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
+				echo form_label('', 'task_id');
+				echo "<input type='text' class='hide' name='task_id' value='". $task->task_id ."'>";
+				echo form_submit('add_btn', 'Delete Task');
+				echo form_close();
+				
 				echo "</div>";
+				
 			}
 		}
 		echo "</div>";

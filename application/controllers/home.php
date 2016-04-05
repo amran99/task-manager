@@ -78,6 +78,14 @@ class Home extends CI_Controller {
   redirect('home/project/'.$project_id, 'refresh');
  }
  
+ function deleteTask(){
+  $project_id=$this->input->post('project_id');
+  $task_id=$this->input->post('task_id');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->deleteTask($task_id);
+  redirect('home/project/'.$project_id, 'refresh');
+ }
+ 
  function logout()
  {
    $this->session->unset_userdata('logged_in');
