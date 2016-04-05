@@ -86,6 +86,30 @@ class Home extends CI_Controller {
   redirect('home/project/'.$project_id, 'refresh');
  }
  
+ function settings()
+ {
+  if($this->session->userdata('logged_in')){
+   $session_data = $this->session->userdata('logged_in');
+   $data['session_data'] = $session_data;
+   
+   if ($this->uri->segment(3) === FALSE){
+    $project_id = 0;
+   }else{
+    $project_id = $this->uri->segment(3);
+   }
+   
+   $this->load->model('tasksmodel');
+   $data['project']=$this->tasksmodel->getProject($project_id);
+   $data['projectTasks']=$this->tasksmodel->getProjectTasks($project_id);
+   
+   $this->load->view('pages/home_view', $data);
+   $this->load->view('pages/settings', $data);
+   $this->load->view("includes/footer");
+   
+   
+   }else{redirect('login', 'refresh');}
+ }
+ 
  function logout()
  {
    $this->session->unset_userdata('logged_in');

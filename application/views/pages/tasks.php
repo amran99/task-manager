@@ -30,6 +30,7 @@
 	echo "<input type='text' name='projectname' required>";
 	echo form_submit('add_btn', 'Create Project');
 	echo form_close();
+	
 	?>
 </div>
 </body>
