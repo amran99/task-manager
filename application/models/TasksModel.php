@@ -57,6 +57,14 @@ class tasksmodel extends CI_Model {
   $result1=$this->db->delete('projects');
  }
  
+ function renameProject($project_id, $new_name){
+  $data = array(
+   'project_name' => $new_name
+  );
+  $this->db->where('project_id', $project_id);
+  $this->db->update('projects',$data);
+ }
+ 
  
 }
 

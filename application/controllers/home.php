@@ -130,6 +130,14 @@ class Home extends CI_Controller {
   redirect('home', 'refresh');
  }
  
+ function renameProject(){
+  $project_id=$this->input->post('project_id');
+  $new_name=$this->input->post('new_name');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->renameProject($project_id, $new_name);
+  redirect('home/project/'.$project_id, 'refresh');
+ }
+ 
  function logout()
  {
    $this->session->unset_userdata('logged_in');
