@@ -60,13 +60,36 @@ a:hover{
 }
 
 .underColumns{
-	height: 150px;
 	padding: 15px;
 	background: coral;
+	float: left;
 }
 
 .behindDiv{
-	height: 400px;
+	float: left;
 	transition: 1s;
 	background-color: darkcyan;
+	width: 100%;
+}
+
+.underColumns input{
+	margin-bottom: 10px;
+	margin-top: 3px;
+}
+
+.settingLink{
+	float: left;
+	transition: 1s;
+	width: 180px;
+	text-align: center;
+	padding: 20px;
+	background-color: lightseagreen;
+}
+
+.settingLink:hover{
+	background-color: aquamarine;
+}
+
+.setLin:hover{
+	color: green;
 }

@@ -62,19 +62,19 @@ echo "<div class='underColumns'><h3>Create New Task: </h3>";
 echo form_open('home/addtask');
 echo form_label('', 'project_id');
 echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
-echo form_label('Task Name:', 'taskname');
-echo "<input type='text' name='taskname' required>";
-echo form_label('Task Description:', 'taskdesc');
-echo "<textarea name='taskdesc' required></textarea>";
-echo form_label('Task End Date:', 'taskfinish');
-echo "<input type='date' name='taskfinish' min='".date("Y-m-d")."' required>";
+echo form_label('', 'taskname');
+echo "<input type='text' name='taskname' placeholder='Task Name' required><br>";
+echo form_label('', 'taskdesc');
+echo "<textarea name='taskdesc' placeholder='Task Description' required></textarea><br>";
+echo form_label(' Task End Date: ', 'taskfinish');
+echo "<input type='date' name='taskfinish' min='".date("Y-m-d")."' required><br>";
 echo form_submit('add_btn', 'Add Task');
 echo form_close();
-	
+echo "</div>";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////    Link to Project Settings    ///////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-echo "<br><a href='".base_url()."index.php/home/settings/".$project[0]->project_id."'>Project Settings</a></div>";
+echo "<a href='".base_url()."index.php/home/settings/".$project[0]->project_id."'class='setLin'><div class='settingLink'>Project Settings</div></a>";
 	
 ?>

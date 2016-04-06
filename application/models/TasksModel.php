@@ -33,7 +33,7 @@ class tasksmodel extends CI_Model {
  }
  
  function insertTask($project_id,$taskname, $taskdesc, $taskfinish){
-  $newTask=array("project_id"=>$project_id,"task_name"=>$taskname,"task_description"=>$taskdesc,"task_start"=>date("d/m/Y"),"task_finish"=>$taskfinish,"task_status"=>"not started");
+  $newTask=array("project_id"=>$project_id,"task_name"=>$taskname,"task_description"=>$taskdesc,"task_start"=>date("Y-m-d"),"task_finish"=>$taskfinish,"task_status"=>"not started");
   return $this->db->insert('tasks', $newTask);
  }
  
