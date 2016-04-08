@@ -65,6 +65,13 @@ class tasksmodel extends CI_Model {
   $this->db->update('projects',$data);
  }
  
+ function getUserId($userEmail){
+  $this->db->select('user_id');
+  $this->db->from('users');
+  $this->db->where('user_id', $userEmail);
+  $query = $this->db->get();
+  return $query->result();
+ }
  
 }
 

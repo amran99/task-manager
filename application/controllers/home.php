@@ -141,6 +141,28 @@ class Home extends CI_Controller {
   redirect('home/project/'.$project_id, 'refresh');
  }
  
+ function getUserId(){
+  if($this->session->userdata('logged_in')){
+   $data['project_id']=$this->input->post('project_id');
+   $userEmail=$this->input->post('userEmail');
+   $this->load->model('tasksmodel');
+   
+   if($this->tasksmodel->getUserId($data['userEmail'])){
+    $userId=$this->tasksmodel->getUserId($data['userEmail']);
+   }else{
+    $session_data = $this->session->userdata('logged_in');
+    $data['session_data'] = $session_data;
+    $data['errorMsg']="The email you have entered is not registered to this website, please try again with a different email";
+    $data['project']=$this->tasksmodel->getProject($data['project_id']);
+    $data['projectTasks']=$this->tasksmodel->getProjectTasks($data['project_id']);
+    $this->load->view('pages/home_view', $data);
+    $this->load->view('pages/settings', $data);
+    $this->load->view("includes/footer");
+   }
+   
+  }
+ }
+ 
  function logout()
  {
    $this->session->unset_userdata('logged_in');
