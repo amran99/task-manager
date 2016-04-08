@@ -149,13 +149,14 @@ class Home extends CI_Controller {
    
    if($this->tasksmodel->getUserId($userEmail)){
     $userId=$this->tasksmodel->getUserId($userEmail);
-    $userId=$userId[0];
-    if($this->tasksmodel->checkInvites("'".$userId."'",$project_id)){
+    $userId=$userId[0]->user_id;
+    if($this->tasksmodel->checkInvites($userId,$project_id)){
      $data['errorMsg']="This user has either:<br> a) Already recieved an invite <br>or <br> b) Already joined the project";
     }else{
      $this->tasksmodel->addUserInvite($userId,$project_id);
      $data['errorMsg']="Your invitation has been sent";
     }
+    
    }else{
     $data['errorMsg']="The email you have entered is not registered to this website, please try again with a different email";
    }

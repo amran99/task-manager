@@ -74,7 +74,7 @@ class tasksmodel extends CI_Model {
  }
  
  function addUserInvite($userId,$project_id){
-  $newInvite=array("project_id"=>$project_id);
+  $newInvite=array("user_id"=>$userId,"project_id"=>$project_id);
   return $this->db->insert('invites', $newInvite);
  }
  
