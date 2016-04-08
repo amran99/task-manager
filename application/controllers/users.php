@@ -1,27 +1,28 @@
 <?php
 class Users extends CI_Controller
 {
- public function user()
- {
- $this->load->model("UsersModel");
- $data['user']=$this->UsersModel->getUsers();
- $this->load->view("pages/login_view",$data);
- $this->load->view("includes/footer",$data);
- }
-
  public function addUser()
  {
- $first_name=$this->input->post('first_name');
- $last_name=$this->input->post('last_name');
- $email=$this->input->post('email');
- $password=$this->input->post('password');
- $this->load->model("UsersModel");
- if($this->UsersModel->insertUser($first_name, $last_name, $email, $password)){
- $data['msg']="Successfully added the new User";
- }else{
- $data['msg']="Something went wrong";
- }
- redirect('home', 'refresh');
+  $email=$this->input->post('email');
+  $this->load->model("UsersModel");
+  $users=$this->UsersModel->getUsers();
+  foreach($users as $user){
+   if($user->email == $email){
+    $first_name=$this->input->post('first_name');
+    $last_name=$this->input->post('last_name');
+    $email=$this->input->post('email');
+    $password=$this->input->post('password');
+    $this->load->model("UsersModel");
+    if($this->UsersModel->insertUser($first_name, $last_name, $email, $password)){
+     $data['msg']="Your Registeration has been successful, please login";
+    }else{
+      $data['msg']="Something went wrong, please try again";
+    }
+   }else{
+    $data['msg']="The email you used is already regitered, please try again with a different email or login with your old one.";
+   }
+  }
+ $this->load->view('pages/login_view', $data);
  }
  
 }

@@ -12,30 +12,25 @@
     <script src="<?php echo base_url()."/javascript/jquery.js";?>"></script>
     
 </head>
-<body>  
-
-<div class="tabs">
-    <ul class="tab-links">
-        <li class="active"><a href="#tab1">Login</a></li>
-        <li><a href="#tab2">Register</a></li>
-    </ul>
-    <div class="tab-content">
-        <div id="tab1" class="tab active">
+<body>
+    <p><?php if(isset($msg)){
+        echo $msg;
+    }?></p>
+        <div id="loginDiv">
+            <h1>Login</h1>
             <?php 
             $attributes = array('id' => 'login', 'class' => 'forms');
             echo form_open('verifylogin', $attributes); ?>
             <label for="email"> </label>
             <input type="text" size="20" name="email" placeholder="Email" required/>
-            <br/>
             <label for="password"></label>
             <input type="password" size="20" name="password" placeholder="Password" required/>
-            <br/>
             <input type="submit" value="Login" id="button"/>
             <?php echo form_close();echo validation_errors();?>
             
         </div>
         
-        <div id="tab2" class="tab">
+        <div id="registerDiv">
             <?php
             $attributes = array('id' => 'signup', 'class' => 'forms');
             $button = 'id = "button"';
@@ -54,10 +49,10 @@
             ?>
         </div>
         
-    </div>
-    <p>User 1: amran@aaa.com ....... 12345678</p><br>
-    <p>User 2: safraz@aaa.com ....... 87654321</p>
-</div>
+
+    <p>User 1: amran@aaa.com ....... 12345678<br>
+    User 2: safraz@aaa.com ....... 87654321</p>
+
 
 </body>
 </html>

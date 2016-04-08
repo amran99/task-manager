@@ -33,8 +33,36 @@ class tasksmodel extends CI_Model {
  }
  
  function insertTask($project_id,$taskname, $taskdesc, $taskfinish){
-  $newTask=array("project_id"=>$project_id,"task_name"=>$taskname,"task_description"=>$taskdesc,"task_start"=>date("Y/m/d"),"task_finish"=>$taskfinish,"task_status"=>"not started");
+  $newTask=array("project_id"=>$project_id,"task_name"=>$taskname,"task_description"=>$taskdesc,"task_start"=>date("Y-m-d"),"task_finish"=>$taskfinish,"task_status"=>"not started");
   return $this->db->insert('tasks', $newTask);
+ }
+ 
+ function updateTask($task_id, $movetaskto, $task_name, $task_desc, $task_finish){
+  $data = array(
+   'task_status' => $movetaskto,'task_name' => $task_name,'task_description' => $task_desc,'task_finish' => $task_finish
+  );
+  $this->db->where('task_id', $task_id);
+  $this->db->update('tasks',$data);
+  }
+ 
+ function deleteTask($task_id){
+  $this->db->where('task_id', $task_id);
+  $result=$this->db->delete('tasks');
+ }
+ 
+ function deleteProject($project_id){
+  $this->db->where('project_id', $project_id);
+  $result=$this->db->delete('tasks');
+  $this->db->where('project_id', $project_id);
+  $result1=$this->db->delete('projects');
+ }
+ 
+ function renameProject($project_id, $new_name){
+  $data = array(
+   'project_name' => $new_name
+  );
+  $this->db->where('project_id', $project_id);
+  $this->db->update('projects',$data);
  }
  
  
