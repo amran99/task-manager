@@ -68,7 +68,21 @@ class tasksmodel extends CI_Model {
  function getUserId($userEmail){
   $this->db->select('user_id');
   $this->db->from('users');
-  $this->db->where('user_id', $userEmail);
+  $this->db->where('email', $userEmail);
+  $query = $this->db->get();
+  return $query->result();
+ }
+ 
+ function addUserInvite($userId,$project_id){
+  $newInvite=array("project_id"=>$project_id);
+  return $this->db->insert('invites', $newInvite);
+ }
+ 
+ function checkInvites($userId,$project_id){
+  $this->db->select('*');
+  $this->db->from('invites');
+  $this->db->where('project_id', $project_id);
+  $this->db->where('user_id', $userId);
   $query = $this->db->get();
   return $query->result();
  }
