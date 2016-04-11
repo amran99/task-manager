@@ -74,12 +74,18 @@ class Home extends CI_Controller {
  function updateTask(){
   $project_id=$this->input->post('project_id');
   $task_id=$this->input->post('task_id');
+<<<<<<< HEAD
   $task_name=$this->input->post('task_name');
   $task_desc=$this->input->post('task_desc');
   $task_finish=$this->input->post('due_date');
   $movetaskto=$this->input->post('movetaskto');
   $this->load->model('tasksmodel');
   $this->tasksmodel->updateTask($task_id, $movetaskto, $task_name, $task_desc, $task_finish);
+=======
+  $movetaskto=$this->input->post('movetaskto');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->moveTask($task_id, $movetaskto);
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
   redirect('home/project/'.$project_id, 'refresh');
  }
  
@@ -111,6 +117,10 @@ class Home extends CI_Controller {
    $this->load->view('pages/settings', $data);
    $this->load->view("includes/footer");
    
+<<<<<<< HEAD
+=======
+   
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
    }else{redirect('login', 'refresh');}
  }
  
@@ -140,6 +150,7 @@ class Home extends CI_Controller {
   $this->load->model('tasksmodel');
   $this->tasksmodel->renameProject($project_id, $new_name);
   redirect('home/project/'.$project_id, 'refresh');
+<<<<<<< HEAD
  }
  
  function addUser(){
@@ -186,6 +197,8 @@ class Home extends CI_Controller {
    else{
      redirect('login', 'refresh');
    }
+=======
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
  }
  
  function logout()

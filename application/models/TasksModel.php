@@ -37,9 +37,15 @@ class tasksmodel extends CI_Model {
   return $this->db->insert('tasks', $newTask);
  }
  
+<<<<<<< HEAD
  function updateTask($task_id, $movetaskto, $task_name, $task_desc, $task_finish){
   $data = array(
    'task_status' => $movetaskto,'task_name' => $task_name,'task_description' => $task_desc,'task_finish' => $task_finish
+=======
+ function moveTask($task_id, $movetaskto){
+  $data = array(
+   'task_status' => $movetaskto
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
   );
   $this->db->where('task_id', $task_id);
   $this->db->update('tasks',$data);
@@ -65,6 +71,7 @@ class tasksmodel extends CI_Model {
   $this->db->update('projects',$data);
  }
  
+<<<<<<< HEAD
  function getUserId($userEmail){
   $this->db->select('user_id');
   $this->db->from('users');
@@ -94,6 +101,8 @@ class tasksmodel extends CI_Model {
   $query = $this->db->get();
   return $query->result();
  }
+=======
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
  
 }
 

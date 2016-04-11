@@ -31,10 +31,13 @@ p.footer{
 }
 
 .hiddenContent{
+<<<<<<< HEAD
 	margin-bottom: 10px;
 	background-color: cadetblue;
 	padding-left: 10px;
 	padding-right: 10px;
+=======
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 	height: 50px;
 	overflow: hidden;
 	transition: 1s;
@@ -96,6 +99,7 @@ a:hover{
 
 .setLin:hover{
 	color: green;
+<<<<<<< HEAD
 }
 
 .updateForm{
@@ -115,4 +119,6 @@ a:hover{
 
 .close a{
 	text-decoration: none;
+=======
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 }

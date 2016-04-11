@@ -28,6 +28,7 @@ echo form_label('Project Name:', 'projectname');
 echo "<input type='text' name='projectname' required>";
 echo form_submit('add_btn', 'Create Project');
 echo form_close();
+<<<<<<< HEAD
 
 
 
@@ -52,3 +53,6 @@ if(isset($invites[0])){
 }
 
 ?>
+=======
+?>
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3

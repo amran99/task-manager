@@ -4,6 +4,7 @@
 <?php
 	
 $h3 = ["Not Started","Started","To Review","Finished"];
+<<<<<<< HEAD
 echo "<div id='behindDiv' class='behindDiv'>";
 
 //This function brings a div to the front with the inputs to update a task
@@ -26,24 +27,58 @@ function openUpdateForm($tasks,$project) {
 			echo form_label('Due Date: ', 'due_date');
 			echo "<input type='date' name='due_date' min='".date("Y-m-d")."' value='". $task->task_finish ."' required><br>";
 			echo form_label('Move Task To: ', 'movetaskto');
+=======
+echo "<div id='behindDiv' class='behindDiv'>";	
+for($i=0;$i<4;$i++){
+	echo "<div class='column' id='column".$i."'>";
+	echo "<h3>".$h3[$i]."</h3>";
+	foreach ($projectTasks as $task){
+		if($task->task_status===strtolower($h3[$i])){
+			echo "<div class='hiddenContent' id='".$task->task_id."'>";
+			echo "<p><span class='hiddenContentTitle' onclick='openContent(".$task->task_id.")'>Task Name: ".$task->task_name."</span>";
+			echo "Task Description: ".$task->task_description."</br>";
+			echo "Task Start: ".$task->task_start."</br>";
+			echo "Task Finish: ".$task->task_finish."</br>";
+			echo "Task Status: ".$task->task_status."</p>";
+				
+			//Update Task
+			echo form_open('home/updatetask');
+			echo form_label('', 'project_id');
+			echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
+			echo form_label('', 'task_id');
+			echo "<input type='text' class='hide' name='task_id' value='". $task->task_id ."'>";
+			echo form_label('Move To:', 'movetaskto');
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 			echo "<select name='movetaskto' required>";
 			echo "<option value='not started'>Not Started</option>";
 			echo "<option value='started'>Started</option>";
 			echo "<option value='to review'>To Review</option>";
 			echo "<option value='finished'>Finished</option>";
+<<<<<<< HEAD
 			echo "</select><br>";
 			echo form_submit('add_btn', 'Update Task');
 			echo form_close();
 			
+=======
+			echo "</select>";
+			echo form_submit('add_btn', 'Update Task');
+			echo form_close();
+				
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 			//Delete Task
 			echo "<br><span>Delete Task:</span>";
 			echo form_open('home/deletetask');
 			echo form_label('', 'project_id');
+<<<<<<< HEAD
 			echo "<input type='text' class='hide' name='project_id' value='". $project->project_id ."'>";
+=======
+			echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 			echo form_label('', 'task_id');
 			echo "<input type='text' class='hide' name='task_id' value='". $task->task_id ."'>";
 			echo form_submit('add_btn', 'Delete Task');
 			echo form_close();
+<<<<<<< HEAD
 		}
 	}
 
@@ -69,6 +104,8 @@ for($i=0;$i<4;$i++){
 			
 			echo "<a href='?taskid=".$task->task_id."'>Edit Task</a>";
 			
+=======
+>>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 				
 			echo "</div>";
 				
