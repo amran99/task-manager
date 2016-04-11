@@ -13,8 +13,10 @@ class Home extends CI_Controller {
    {
      $session_data = $this->session->userdata('logged_in');
      $data['session_data'] = $session_data;
+     $user_id = $session_data['user_id'];
      $this->load->model('tasksmodel');
      $data['projects']=$this->tasksmodel->getUsersProjects();
+     $data['invites']=$this->tasksmodel->getInvites($user_id);
      
      $this->load->view('pages/home_view', $data);
      $this->load->view('pages/tasks', $data);
@@ -109,7 +111,6 @@ class Home extends CI_Controller {
    $this->load->view('pages/settings', $data);
    $this->load->view("includes/footer");
    
-   
    }else{redirect('login', 'refresh');}
  }
  
@@ -168,6 +169,23 @@ class Home extends CI_Controller {
    $this->load->view('pages/settings', $data);
    $this->load->view("includes/footer");
   }
+ }
+ 
+ function confirm(){
+   if($this->session->userdata('logged_in')){
+     $session_data = $this->session->userdata('logged_in');
+     $data['session_data'] = $session_data;
+     $data['user_id'] = $session_data['user_id'];
+     $project_id=$this->input->post('project_id');
+     $this->load->model('tasksmodel');
+     $data['project']=$this->tasksmodel->getProject($project_id);
+     $this->load->view('pages/home_view', $data);
+     $this->load->view('pages/confirm', $data);
+     $this->load->view("includes/footer");
+   }
+   else{
+     redirect('login', 'refresh');
+   }
  }
  
  function logout()

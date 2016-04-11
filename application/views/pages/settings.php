@@ -26,6 +26,7 @@ if(isset($errorMsg)){
     echo $errorMsg;
 }
 
+
 //Delete Project
 echo "<h2>Delete Project</h2>";
 echo "<h3>Delete Project</h3>";

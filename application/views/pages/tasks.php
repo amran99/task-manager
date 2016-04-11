@@ -28,4 +28,27 @@ echo form_label('Project Name:', 'projectname');
 echo "<input type='text' name='projectname' required>";
 echo form_submit('add_btn', 'Create Project');
 echo form_close();
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////    Invites    ///////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+if(isset($invites[0])){
+	echo "<h3>Your Invites:</h3>";
+	echo "<p>Below are the project/s that you have been invited to:</p>";
+	foreach($invites as $invite){
+		foreach($projects as $project){
+			if($project->project_id == $invite->project_id){
+				echo form_open('home/confirm');
+				echo form_label('', 'project_id');
+				echo "<input type='text' class='hide' name='project_id' value='". $project->project_id ."'>";
+				echo form_submit('add_btn', $project->project_name);
+				echo form_close();
+			}
+		}
+	}
+}
+
 ?>

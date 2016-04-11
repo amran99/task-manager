@@ -87,6 +87,14 @@ class tasksmodel extends CI_Model {
   return $query->result();
  }
  
+ function getInvites($user_id){
+  $this->db->select('*');
+  $this->db->from('invites');
+  $this->db->where('user_id', $user_id);
+  $query = $this->db->get();
+  return $query->result();
+ }
+ 
 }
 
 ?>
