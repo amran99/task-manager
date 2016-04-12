@@ -2,10 +2,7 @@
 <?php echo "<h2>".$project[0]->project_name.": Settings</h2>";
 
 //Rename Project
-<<<<<<< HEAD
 echo "<h2>Rename Project</h2>";
-=======
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 echo form_open('home/renameProject');
 echo form_label('', 'project_id');
 echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
@@ -14,7 +11,6 @@ echo "<input type='text' name='new_name' placeholder='New Project Name' required
 echo form_submit('add_btn', 'Rename Project');
 echo form_close();
 
-<<<<<<< HEAD
 //Add another user to Project
 echo "<h2>Add another User to this Project</h2>";
 echo "<p>Insert the email of the user you want to join this project below and an invitation will be sent to that user</p>";
@@ -33,10 +29,6 @@ if(isset($errorMsg)){
 
 //Delete Project
 echo "<h2>Delete Project</h2>";
-=======
-
-//Delete Project
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
 echo "<h3>Delete Project</h3>";
 echo form_open('home/deleteprojectconfirmation');
 echo form_label('', 'project_id');

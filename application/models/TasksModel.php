@@ -37,15 +37,9 @@ class tasksmodel extends CI_Model {
   return $this->db->insert('tasks', $newTask);
  }
  
-<<<<<<< HEAD
  function updateTask($task_id, $movetaskto, $task_name, $task_desc, $task_finish){
   $data = array(
    'task_status' => $movetaskto,'task_name' => $task_name,'task_description' => $task_desc,'task_finish' => $task_finish
-=======
- function moveTask($task_id, $movetaskto){
-  $data = array(
-   'task_status' => $movetaskto
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
   );
   $this->db->where('task_id', $task_id);
   $this->db->update('tasks',$data);
@@ -71,7 +65,6 @@ class tasksmodel extends CI_Model {
   $this->db->update('projects',$data);
  }
  
-<<<<<<< HEAD
  function getUserId($userEmail){
   $this->db->select('user_id');
   $this->db->from('users');
@@ -101,8 +94,27 @@ class tasksmodel extends CI_Model {
   $query = $this->db->get();
   return $query->result();
  }
-=======
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
+ 
+ function delInvite($invite_id){
+  $this->db->where('invite_id', $invite_id);
+  $result=$this->db->delete('invites');
+ }
+ 
+ function getProjectUsers($project_id){
+  $this->db->select('*');
+  $this->db->from('projects');
+  $this->db->where('project_id', $project_id);
+  $query = $this->db->get();
+  return $query->result();
+ }
+ 
+ function addUsrtoPrjct($project_id, $newUsrList){
+  $data = array(
+   'user_id' => $newUsrList
+  );
+  $this->db->where('project_id', $project_id);
+  $this->db->update('projects',$data);
+ }
  
 }
 

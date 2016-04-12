@@ -12,15 +12,10 @@
     <script src="<?php echo base_url()."/javascript/jquery.js";?>"></script>
     
 </head>
-<<<<<<< HEAD
 <body>
     <p><?php if(isset($msg)){
         echo $msg;
     }?></p>
-=======
-<body>  
-
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
         <div id="loginDiv">
             <h1>Login</h1>
             <?php 

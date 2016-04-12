@@ -74,18 +74,12 @@ class Home extends CI_Controller {
  function updateTask(){
   $project_id=$this->input->post('project_id');
   $task_id=$this->input->post('task_id');
-<<<<<<< HEAD
   $task_name=$this->input->post('task_name');
   $task_desc=$this->input->post('task_desc');
   $task_finish=$this->input->post('due_date');
   $movetaskto=$this->input->post('movetaskto');
   $this->load->model('tasksmodel');
   $this->tasksmodel->updateTask($task_id, $movetaskto, $task_name, $task_desc, $task_finish);
-=======
-  $movetaskto=$this->input->post('movetaskto');
-  $this->load->model('tasksmodel');
-  $this->tasksmodel->moveTask($task_id, $movetaskto);
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
   redirect('home/project/'.$project_id, 'refresh');
  }
  
@@ -117,10 +111,6 @@ class Home extends CI_Controller {
    $this->load->view('pages/settings', $data);
    $this->load->view("includes/footer");
    
-<<<<<<< HEAD
-=======
-   
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
    }else{redirect('login', 'refresh');}
  }
  
@@ -150,7 +140,6 @@ class Home extends CI_Controller {
   $this->load->model('tasksmodel');
   $this->tasksmodel->renameProject($project_id, $new_name);
   redirect('home/project/'.$project_id, 'refresh');
-<<<<<<< HEAD
  }
  
  function addUser(){
@@ -159,15 +148,29 @@ class Home extends CI_Controller {
    $userEmail=$this->input->post('userEmail');
    $this->load->model('tasksmodel');
    
+   $isalldne = false;
+   
    if($this->tasksmodel->getUserId($userEmail)){
     $userId=$this->tasksmodel->getUserId($userEmail);
     $userId=$userId[0]->user_id;
     if($this->tasksmodel->checkInvites($userId,$project_id)){
      $data['errorMsg']="This user has either:<br> a) Already recieved an invite <br>or <br> b) Already joined the project";
     }else{
+     $projectUsers = $this->tasksmodel->getProjectUsers($project_id);
+     $pieces = explode(",", $projectUsers[0]->user_id);
+     for($i=0;$i<count($pieces);$i++){
+      if($pieces[$i]==$userId){
+       $data['errorMsg']="This user has already joined the project";
+       $isalldne = true;
+      }
+     }
+    }
+    
+    if($isalldne == false){
      $this->tasksmodel->addUserInvite($userId,$project_id);
      $data['errorMsg']="Your invitation has been sent";
     }
+    
     
    }else{
     $data['errorMsg']="The email you have entered is not registered to this website, please try again with a different email";
@@ -188,6 +191,7 @@ class Home extends CI_Controller {
      $data['session_data'] = $session_data;
      $data['user_id'] = $session_data['user_id'];
      $project_id=$this->input->post('project_id');
+     $data['invite_id']=$this->input->post('invite_id');
      $this->load->model('tasksmodel');
      $data['project']=$this->tasksmodel->getProject($project_id);
      $this->load->view('pages/home_view', $data);
@@ -197,8 +201,27 @@ class Home extends CI_Controller {
    else{
      redirect('login', 'refresh');
    }
-=======
->>>>>>> ab08d41b40400179d5f8b93638a0d996ba7d58d3
+ }
+ 
+ function accept(){
+  $project_id=$this->input->post('project_id');
+  $user_id=$this->input->post('user_id');
+  $invite_id=$this->input->post('invite_id');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->delInvite($invite_id);
+  $projectUsers = $this->tasksmodel->getProjectUsers($project_id);
+  $newUsrList = $projectUsers[0]->user_id.",".$user_id;
+  $this->tasksmodel->addUsrtoPrjct($project_id, $newUsrList);
+  redirect('home', 'refresh');
+ }
+ 
+ function decline(){
+  $project_id=$this->input->post('project_id');
+  $user_id=$this->input->post('user_id');
+  $invite_id=$this->input->post('invite_id');
+  $this->load->model('tasksmodel');
+  $this->tasksmodel->delInvite($invite_id);
+  redirect('home', 'refresh');
  }
  
  function logout()
