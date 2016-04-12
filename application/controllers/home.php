@@ -6,16 +6,21 @@ class Home extends CI_Controller {
  {
    parent::__construct();
  }
-
+//This function will open the first page after the user has logged in
  function index()
  {
+  //The view will only be loaded if the user is logged in
    if($this->session->userdata('logged_in'))
    {
+    //session data can be used to stor any amount of data but in this case, it is used to store some of the users details and can be accessed using the code below.
      $session_data = $this->session->userdata('logged_in');
      $data['session_data'] = $session_data;
      $user_id = $session_data['user_id'];
+     //The code below loads the task model
      $this->load->model('tasksmodel');
+     //these are functions in the model which can be activated in controllers
      $data['projects']=$this->tasksmodel->getUsersProjects();
+     //you can also feed data in for more complex queries
      $data['invites']=$this->tasksmodel->getInvites($user_id);
      
      $this->load->view('pages/home_view', $data);
@@ -34,7 +39,7 @@ class Home extends CI_Controller {
   if($this->session->userdata('logged_in')){
    $session_data = $this->session->userdata('logged_in');
    $data['session_data'] = $session_data;
-   
+   //This checks the url for the project id
    if ($this->uri->segment(3) === FALSE){
     $project_id = 0;
    }else{
@@ -113,7 +118,7 @@ class Home extends CI_Controller {
    
    }else{redirect('login', 'refresh');}
  }
- 
+ //a confirmation function to avoid user error, In the future this could be addapted to work for any confirmation page simply to reduce the amount of code
  function deleteProjectConfirmation(){
   if($this->session->userdata('logged_in')){
    $session_data = $this->session->userdata('logged_in');

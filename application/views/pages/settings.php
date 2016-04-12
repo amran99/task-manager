@@ -15,6 +15,7 @@ echo form_close();
 echo "<h2>Add another User to this Project</h2>";
 echo "<p>Insert the email of the user you want to join this project below and an invitation will be sent to that user</p>";
 echo form_open('home/addUser');
+//hidden content to make things easier in the controller
 echo form_label('', 'project_id');
 echo "<input type='text' class='hide' name='project_id' value='". $project[0]->project_id ."'>";
 echo form_label('', 'userEmail');
@@ -22,9 +23,13 @@ echo "<input type='email' name='userEmail' placeholder='New Users Email' require
 echo form_submit('add_btn', 'Add User');
 echo form_close();
 
+//Outputs error message from controller
 if(isset($errorMsg)){
     echo $errorMsg;
 }
+
+//Another Function that needs to be added here is a leave project function, a simple sql quer to remove the user from 
+
 
 
 //Delete Project

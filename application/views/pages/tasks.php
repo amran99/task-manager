@@ -4,7 +4,9 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 echo "<h3>Your Projects: </h3>";
-	
+//since there is an option for multiple users per project, i have stored all user_id's that are involved in each project in the projects table in the database under user_id.
+//it is stored in this format: 1,3,4            Each number is a user id
+//the code below seperates the user id from each project and if one of the user id's is the same as the user id in the session data, it displays the project
 foreach($projects as $project){
 	$pieces = explode(",", $project->user_id);
 	for($i=0;$i<count($pieces);$i++){
@@ -38,6 +40,7 @@ echo form_close();
 if(isset($invites[0])){
 	echo "<h3>Your Invites:</h3>";
 	echo "<p>Below are the project/s that you have been invited to:</p>";
+	//Having loops within loops is usually risky because it could output multiples, but not in this case.
 	foreach($invites as $invite){
 		foreach($projects as $project){
 			if($project->project_id == $invite->project_id){
