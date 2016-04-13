@@ -18,4 +18,4 @@ Site URL: <a href="https://selene.hud.ac.uk/u1357440/task-manager/">https://sele
 
 <h2>CodeIgniter - MVC Framework</h2>
 
-<p>One really great thing about CodeIgniter is that it is really easy to get your head around the idea of Models, Views, and Controllers. It allows you to create websites without much hastle but requires some foresight to know what the code the websites next feature may require. For example, in this website, there are several instances where form inputs are hidden to pass through values to the controller. It requires some thought in the long run to know what could be required for some of the functions.</p>
+<p>One really great thing about CodeIgniter is that it is really easy to get your head around the idea of Models, Views, and Controllers. It allows you to create websites without much hastle but requires some foresight to know what code the websites next feature may require. For example, in this website, there are several instances where form inputs are hidden to pass through values to the controller. It requires some thought in the long run to know what could be required for some of the functions.</p>
