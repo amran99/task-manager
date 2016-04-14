@@ -20,3 +20,11 @@ Site URL: <a href="https://selene.hud.ac.uk/u1357440/task-manager/">https://sele
 <h2>CodeIgniter - MVC Framework</h2>
 
 <p>One really great thing about CodeIgniter is that it is really easy to get your head around the idea of Models, Views, and Controllers. It allows you to create websites without much hastle but requires some foresight to know what code the websites next feature may require. For example, in this website, there are several instances where form inputs are hidden to pass through values to the controller. It requires some thought in the long run to know what could be required for some of the functions.</p>
+
+<h2>Installation</h2>
+<p>If you want to run this project on your own Web Server, you will need to change the configs listed below:</p>
+<ul>
+<li>application/config/config.php - line 17 - base_url</li>
+<li>application/config/databse.php - lines 51 to 54 - hostname,username,password,database</li>
+</ul>
+<p>You will also need to import the database tables. The u1357440.sql file is located in the root folder</p>
