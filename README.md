@@ -7,6 +7,7 @@ Site URL: <a href="https://selene.hud.ac.uk/u1357440/task-manager/">https://sele
     <li>Create, Edit and Delete Projects</li>
     <li>Create, Edit and Delete Tasks</li>
 </ul>
+<p>This more devopment, this site would be capable of creating admins for the projects and assigning roles within members of a project. It would also allow for better sorting of tasks to display tasks with the closest due date. As it is currently, it has all the necessary functionality required in a task manager. The best thing about it is that alot of people can use it and one user wont be able to affect another users project unless he is invited to that project.</p>
 
 <h2>Task Model</h2>
 
